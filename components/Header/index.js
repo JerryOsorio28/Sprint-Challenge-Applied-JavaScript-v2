@@ -11,7 +11,6 @@
 
 const headerContainer = document.querySelector('.header-Container')
 
-
 function Header() {
     const header = document.createElement('div');
     const date = document.createElement('span');
@@ -34,4 +33,4 @@ function Header() {
     temp.textContent = '98°'
 }
 
-Header();
+    Header();

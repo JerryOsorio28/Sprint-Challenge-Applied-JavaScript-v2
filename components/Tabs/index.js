@@ -7,13 +7,13 @@
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
 const topicsClass = document.querySelector('.topics')
 
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
 .then(data => {
 //-------------------------------------- Target articles
     const trendingTopicsTabs = data.data.topics
-    //  console.log(data.data.topics[0])  
 //-------------------------------------- Target specific article on the list with a forEach loop
     trendingTopicsTabs.forEach(data => {
     //---------------------------------- Create a new topic
@@ -23,11 +23,10 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     })
 })
 .catch(data => {
-    // console.log ('try again')
+    console.log ('try again')
 })
 
 function Topics () {
-    const tab = document.createElement('div')
     const javascript = document.createElement('a')
     const bootstrap = document.createElement('a')
     const technology = document.createElement('a')

@@ -24,7 +24,6 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles/')
 .then (data => {
 //-------------------------------------- Target articles
     const articles = data.data.articles
-    // console.log(articles)
 //-------------------------------------- Target specific article on the list with a forEach loop
     articles.bootstrap.forEach(data => {
 //-------------------------------------- Create a new card
@@ -80,5 +79,5 @@ function Cards (object){
     authorName.textContent = object.authorName
 
     
-return card;
+    return card;
 }
