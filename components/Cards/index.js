@@ -18,36 +18,45 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-const article = 'article'
-const index = 'index'
-
-const tabs = document.querySelector('.card')
-console.log(tabs)
+const cardsContainer = document.querySelector(".cards-container")
 
 axios.get('https://lambda-times-backend.herokuapp.com/articles/')
 .then (data => {
+//-------------------------------------- Target articles
     const articles = data.data.articles
-    // console.log(data.data.articles)
+    // console.log(articles)
+//-------------------------------------- Target specific article on the list with a forEach loop
+    articles.bootstrap.forEach(data => {
+//-------------------------------------- Create a new card
+    const cards = Cards(data)
+//-------------------------------------- Append Card to it's correct location       
+    cardsContainer.appendChild(cards)
+    })
 
-    articles.forEach(data => {
-        //----- Create a new element
-        const newArticle = Cards(data)
-        console.log(newArticle)
-        //----- Give element content
-     
-        //----- Append element in correct location
-        
-    
-            // console.log(tabs)
-        })
-
+    articles.javascript.forEach(data => {
+    const cards = Cards(data)
+    cardsContainer.appendChild(cards)
+    })
+    articles.jquery.forEach(data => {
+    const cards = Cards(data)
+    cardsContainer.appendChild(cards)
+    })
+    articles.node.forEach(data => {
+    const cards = Cards(data)
+    cardsContainer.appendChild(cards)
+    })
+    articles.technology.forEach(data => {
+    const cards = Cards(data)
+    cardsContainer.appendChild(cards)
+    })
 
 })
-.then (data => {
-    // console.log('try again')
+.catch (data => {
+    console.log('try again')
 })
 
-function Cards (){
+function Cards (object){
+    // console.log(object)
     const card = document.createElement('div');
     const headline = document.createElement('div');
     const author = document.createElement('div');
@@ -66,10 +75,10 @@ function Cards (){
     author.classList.add('author')
     imgContainer.classList.add('img-container')
 //---------------------------set text content
-    headline.textContent = '{Headline of article}'  
-    // img.src = `data.data.articles.${article}.${index}.authorPhoto`
+    headline.textContent = object.headline
+    img.src = object.authorPhoto
+    authorName.textContent = object.authorName
 
-return card
+    
+return card;
 }
-
-Cards();

@@ -9,7 +9,7 @@
 //  </div >
 // And add it to the DOM in the .headerContainer component
 
-const headerContainer = document.querySelector('.headerContainer')
+const headerContainer = document.querySelector('.header-Container')
 
 
 function Header() {
@@ -32,9 +32,6 @@ function Header() {
     date.textContent = 'MARCH 28, 2019'
     title.textContent = 'Lambda Times'
     temp.textContent = '98°'
-
-
-    return header;
 }
 
 Header();
