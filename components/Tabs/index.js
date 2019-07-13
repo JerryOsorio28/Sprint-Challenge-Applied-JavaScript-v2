@@ -27,18 +27,21 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
 })
 
 function Topics () {
+    const all = document.createElement('a')
     const javascript = document.createElement('a')
     const bootstrap = document.createElement('a')
     const technology = document.createElement('a')
     const jquery = document.createElement('a')
     const nodeJs = document.createElement('a')
 //---------------------------setup structure of elements
+    topicsClass.appendChild(all)
     topicsClass.appendChild(javascript)
     topicsClass.appendChild(bootstrap)
     topicsClass.appendChild(technology)
     topicsClass.appendChild(jquery)
     topicsClass.appendChild(nodeJs)
 //---------------------------set classes
+    all.classList.add('tab')
     javascript.classList.add('tab')
     bootstrap.classList.add('tab')
     bootstrap.classList.add('tab')
@@ -46,6 +49,7 @@ function Topics () {
     jquery.classList.add('tab')
     nodeJs.classList.add('tab')
 //---------------------------set text content
+    all.textContent = 'All'
     javascript.textContent = 'Javascript'
     bootstrap.textContent = 'Bootstrap'
     technology.textContent = 'Technology'
