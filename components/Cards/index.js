@@ -17,3 +17,67 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+const cardsContainer = document.querySelector(".cards-container")
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles/')
+.then (data => {
+//-------------------------------------- Target articles
+    const articles = data.data.articles
+//-------------------------------------- Target specific article on the list with a forEach loop
+    articles.bootstrap.forEach(data => {
+//-------------------------------------- Create a new card
+    const cards = Cards(data)
+//-------------------------------------- Append Card to it's correct location       
+    cardsContainer.appendChild(cards)
+    })
+
+    articles.javascript.forEach(data => {
+    const cards = Cards(data)
+    cardsContainer.appendChild(cards)
+    })
+    articles.jquery.forEach(data => {
+    const cards = Cards(data)
+    cardsContainer.appendChild(cards)
+    })
+    articles.node.forEach(data => {
+    const cards = Cards(data)
+    cardsContainer.appendChild(cards)
+    })
+    articles.technology.forEach(data => {
+    const cards = Cards(data)
+    cardsContainer.appendChild(cards)
+    })
+
+})
+.catch (data => {
+    console.log('try again')
+})
+
+function Cards (object){
+    // console.log(object)
+    const card = document.createElement('div');
+    const headline = document.createElement('div');
+    const author = document.createElement('div');
+    const imgContainer = document.createElement('div');
+    const img = document.createElement('img');
+    const authorName = document.createElement('span');
+//---------------------------setup structure of elements
+    card.appendChild(headline)
+    card.appendChild(author)
+    author.appendChild(imgContainer)
+    imgContainer.appendChild(img)
+    author.appendChild(authorName)
+//---------------------------set class names
+    card.classList.add('card')
+    headline.classList.add('headline')
+    author.classList.add('author')
+    imgContainer.classList.add('img-container')
+//---------------------------set text content
+    headline.textContent = object.headline
+    img.src = object.authorPhoto
+    authorName.textContent = object.authorName
+
+    
+    return card;
+}
